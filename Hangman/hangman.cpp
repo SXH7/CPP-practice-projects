@@ -50,6 +50,24 @@ void drawHangman(int count = 0)
     if(count ==4){
         printmsg("|", false, false);
     }
+    if(count ==5){
+        printmsg("|\\", false, false);
+    }
+    if(count >= 6){
+        printmsg("/|\\", false, false);
+    }
+    if(count == 7){
+        printmsg(" \\", false, false);
+    }
+    if(count >= 8){
+        printmsg("/ \\", false, false);
+    }
+    if(count >=9){
+        printmsg("+--------+", false, false);
+    }
+    if(count ==10){
+        printmsg("+         +", false, false);
+    }
 }
 
 int main()
