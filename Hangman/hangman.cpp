@@ -101,8 +101,19 @@ bool check(string word, char guess)
     string s;
     for(int i  = 0; i < word.length(); i++)
     {
-        if()
+        if(guess != word[i])
+        {
+            s+=word[i];
+            s+=" ";
+        }
+        else
+        {
+            won = false;
+            s+= "_ ";
+        }
     }
+    printMsg(s, false);
+    return won;
 
 }
 
@@ -113,6 +124,7 @@ int main()
     drawHangman(10);
     printLetters("", 'A', 'M', true, false);
     printLetters("", 'N', 'Z', false, true);
+    check("sample", 's');
 
     getchar();
     return 0;
