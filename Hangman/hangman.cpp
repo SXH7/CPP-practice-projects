@@ -103,13 +103,13 @@ bool check(string word, char guess)
     {
         if(guess != word[i])
         {
-            s+=word[i];
-            s+=" ";
+            won = false;
+            s+= "_ ";
         }
         else
         {
-            won = false;
-            s+= "_ ";
+            s+=word[i];
+            s+=" ";
         }
     }
     printMsg(s, false);
@@ -120,11 +120,24 @@ bool check(string word, char guess)
 // main fuction
 int main()
 {
-    printMsg("Hangman");
-    drawHangman(10);
-    printLetters("", 'A', 'M', true, false);
-    printLetters("", 'N', 'Z', false, true);
-    check("sample", 's');
+
+    // Game Loop
+    char letter;
+    int tries = 0;
+    while(tries <= 10)
+
+    {
+        cout << "Enter the letter to guess";
+        cin >> letter;
+        printMsg("Hangman");
+        drawHangman(10);
+        printLetters("", 'A', 'M', true, false);
+        printLetters("", 'N', 'Z', false, true);
+        cout << check("sample", letter);
+        tries+=1;
+    }
+
+
 
     getchar();
     return 0;
