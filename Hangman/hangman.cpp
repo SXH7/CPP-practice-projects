@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 
@@ -87,29 +89,27 @@ void printLetters(string input, char from, char to, bool top, bool bottom)
             s+=" ";
         }
         else
-        {
             s+=" ";
-        }
     }
     printMsg(s, top, bottom);
 }
 
 // function checks if letter guessed by user is in the word or not
-bool check(string word, char guess)
+bool check(string word, string guess)
 {
     bool won = true;
     string s;
-    for(int i  = 0; i < word.length(); i++)
+    for (int i = 0; i < word.length(); i++)
     {
-        if(guess != word[i])
+        if (guess.find(word[i]) == string::npos)
         {
             won = false;
-            s+= "_ ";
+            s += "_ ";
         }
         else
         {
-            s+=word[i];
-            s+=" ";
+            s += word[i];
+            s += " ";
         }
     }
     printMsg(s, false);
@@ -121,23 +121,15 @@ bool check(string word, char guess)
 int main()
 {
 
-    // Game Loop
-    char letter;
-    int tries = 0;
-    while(tries <= 10)
+    string letter;
+    cout << "Enter the letter to guess.";
+    cin >> letter;
 
-    {
-        cout << "Enter the letter to guess";
-        cin >> letter;
-        printMsg("Hangman");
-        drawHangman(10);
-        printLetters("", 'A', 'M', true, false);
-        printLetters("", 'N', 'Z', false, true);
-        cout << check("sample", letter);
-        tries+=1;
-    }
-
-
+    printMsg("Hangman");
+    drawHangman(10);
+    printLetters(letter, 'A', 'M', true, false);
+    printLetters(letter, 'N', 'Z', false, true);
+    check("sample", letter);
 
     getchar();
     return 0;
