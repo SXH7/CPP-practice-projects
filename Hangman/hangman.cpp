@@ -120,16 +120,37 @@ bool check(string word, string guess)
 // main fuction
 int main()
 {
+    int tries = 0;
 
-    string letter;
-    cout << "Enter the letter to guess.";
-    cin >> letter;
+    // gameloop
+    while(tries <= 10){
 
-    printMsg("Hangman");
-    drawHangman(10);
-    printLetters(letter, 'A', 'M', true, false);
-    printLetters(letter, 'N', 'Z', false, true);
-    check("sample", letter);
+        string word;
+        cout << "Enter the word to guess.";
+        cin >> word;
+
+        printMsg("Hangman");
+        drawHangman(tries);
+        printLetters(word, 'A', 'M', true, false);
+        printLetters(word, 'N', 'Z', false, true);
+        check("sample", word);
+
+        if(tries == 9){
+            cout << "Last Chance!" << endl;
+        }
+        if(word == "sample"){
+            cout << "You got the word!";
+            break;
+        }
+        if(tries == 10){
+            cout << "You didn't get the word :(" << endl;
+            break;
+        }
+
+        tries++;
+    }
+
+
 
     getchar();
     return 0;
